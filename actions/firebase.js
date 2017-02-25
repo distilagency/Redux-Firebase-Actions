@@ -1,5 +1,4 @@
-import firebase from 'firebase';
-import { firebaseAuth, firebaseDb } from '../firebase';
+import { firebaseAuth, firebaseDb } from '../utils/firebase';
 import {
   INIT_AUTH,
   SIGN_IN_ERROR,
@@ -78,19 +77,19 @@ function authenticate(provider) {
     .catch(error => signInError(error));
 }
 export function signInWithGoogle() {
-  return authenticate(new firebase.auth.GoogleAuthProvider());
+  return authenticate(new firebaseAuth.GoogleAuthProvider());
 }
 export function signInWithTwitter() {
-  return authenticate(new firebase.auth.TwitterAuthProvider());
+  return authenticate(new firebaseAuth.TwitterAuthProvider());
 }
 export function signInWithGithub() {
-  const provider = new firebase.auth.GithubAuthProvider();
+  const provider = new firebaseAuth.GithubAuthProvider();
   const scopes = ['user', 'repo', 'delete_repo', 'read:org', 'write:org'];
   scopes.map(scope => provider.addScope(scope));
   return authenticate(provider);
 }
 export function signInWithFacebook() {
-  const provider = new firebase.auth.FacebookAuthProvider();
+  const provider = new firebaseAuth.FacebookAuthProvider();
   const scopes = ['email'];
   scopes.map(scope => provider.addScope(scope));
   return authenticate(provider);

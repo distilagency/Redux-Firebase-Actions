@@ -1,4 +1,4 @@
-import { getErrorFromCode } from '../firebase/validation';
+import { getErrorFromCode } from '../utils/firebase/validation';
 
 import {
   INIT_AUTH,
